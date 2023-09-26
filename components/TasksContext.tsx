@@ -1,5 +1,7 @@
 import React, { useContext, useReducer, createContext } from 'react'
-import { State } from '../types/typeState';
+import { IState } from '../types/typeState';
+import { IAction } from '../types/typeAction';
+import { Constants } from '../types/actions';
 
 const TasksContext = createContext(null);
 const TasksDispatchContext = createContext(null)
@@ -27,28 +29,32 @@ export function useTasksDispatch() {
     return useContext(TasksDispatchContext);
 }
 
-function tasksReducer(tasks: State, action) {
+const defaultState: IState = {
+    tasks: [],
+}
+
+function tasksReducer(tasks: IState = defaultState, action:IAction) {
     switch (action.type) {
-      case 'added': {
-        return [...tasks, {
-          id: action.id,
-          text: action.text,
-        }];
-      }
-      case 'changed': {
-        return tasks.map(t => {
-          if (t.id === action.task.id) {
-            return action.task;
-          } else {
-            return t;
-          }
-        });
-      }
-      case 'deleted': {
-        return tasks.filter(t => t.id !== action.id);
-      }
-      default: {
-        throw Error('Unknown action: ' + action.type);
-      }
+        case Constants.ADD_TASK: {
+            return [...tasks, {
+                id: action.id,
+                text: action.text,
+            }];
+        }
+        case Constants.CHANGE_TASK: {
+            return tasks.map(t => {
+                if (t.id === action.task.id) {
+                    return action.task;
+                } else {
+                    return t;
+                }
+            });
+        }
+        case Constants.DELETE_TASK: {
+            return tasks.filter(t => t.id !== action.id);
+        }
+        default: {
+            throw Error('Unknown action: ' + action.type);
+        }
     }
-  }
+}
