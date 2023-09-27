@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IAddTask } from '../types/typeAction';
 import { useTasksDispatch } from './TasksProvider';
 import { Constants } from '../types/actions';
+import { Button, Input } from 'antd';
 
 let nextId = 0;
 
@@ -10,19 +11,19 @@ export default function AddTask() {
   const dispatch = useTasksDispatch() as React.Dispatch<IAddTask>;
   return (
     <>
-      <input
+      <Input style={{ width: '20%' }}
         placeholder="Add task"
         value={text}
         onChange={e => setText(e.target.value)}
       />
-      <button onClick={() => {
+      <Button type = "primary" onClick={() => {
         setText('');
         dispatch({
           type: Constants.ADD_TASK,
           id: nextId++,
           text: text
         }); 
-      }}>Add</button>
+      }}>Add</Button>
     </>
   );
 }

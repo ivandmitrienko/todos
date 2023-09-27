@@ -3,6 +3,8 @@ import { useTasks, useTasksDispatch } from './TasksProvider';
 import { IState, Task } from 'types/typeState';
 import { Constants } from 'types/actions';
 import { PartialTask } from 'types/typeAction';
+import {  Input } from 'antd';
+import moment from 'moment';
 
 export default function TaskList() {
   const tasks = useTasks() as IState;
@@ -30,7 +32,7 @@ function CreateTask({ task }: Props) {
   if (isEditing) {
     taskContent = (
       <>
-        <input
+        <Input style={{ width: '20%' }}
           value={task.text}
           onChange={e => {
             dispatch({
@@ -58,19 +60,7 @@ function CreateTask({ task }: Props) {
   }
   return (
     <label>
-      {/* <input
-        type="checkbox"
-        checked={task.done}
-        onChange={e => {
-          dispatch({
-            type: 'changed',
-            task: {
-              ...task,
-              done: e.target.checked
-            }
-          });
-        }}
-      /> */}
+      {moment().format('D/MM/YYYY')}
       {taskContent}
       <button onClick={() => {
         dispatch({
