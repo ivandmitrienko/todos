@@ -7,7 +7,7 @@ let nextId = 0;
 
 export default function AddTask() {
   const [text, setText] = useState('');
-  const dispatch = useTasksDispatch as React.Dispatch<IAddTask>;
+  const dispatch = useTasksDispatch() as React.Dispatch<IAddTask>;
   return (
     <>
       <input
