@@ -9,3 +9,5 @@ export interface IAction {
     text:string,
     task: Task
 }
+
+export type IAddTask = Pick<IAction, "type" | "id" | "text">

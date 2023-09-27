@@ -1,11 +1,13 @@
-import React from 'react';
+import { TasksProvider } from './components/TasksProvider';
+import AddTask from './components/AddTask';
 
 
 export default function App() {
     return (
-
-      <h1>TodoList</h1>
-
+      <TasksProvider>
+          <h1>TodoList</h1>
+          <AddTask/>
+      </TasksProvider>
     );
   }
 
