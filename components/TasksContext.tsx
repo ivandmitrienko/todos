@@ -3,13 +3,14 @@ import { IState } from '../types/typeState';
 import { IAction } from '../types/typeAction';
 import { Constants } from '../types/actions';
 
-const TasksContext = createContext(null);
-const TasksDispatchContext = createContext(null)
+const TasksContext = createContext<IState | null>(null);
+const TasksDispatchContext = createContext<React.Dispatch<IAction> | null>(null);
+let initialTasks: IState = [];
 
 export default function TasksProvider({ children }) {
 
     const [tasks, dispatch] = useReducer(
-        taskReducer,
+        tasksReducer,
         initialTasks
     )
     return (
@@ -29,11 +30,7 @@ export function useTasksDispatch() {
     return useContext(TasksDispatchContext);
 }
 
-const defaultState: IState = {
-    tasks: [],
-}
-
-function tasksReducer(tasks: IState = defaultState, action:IAction) {
+function tasksReducer(tasks: IState, action: IAction) {
     switch (action.type) {
         case Constants.ADD_TASK: {
             return [...tasks, {

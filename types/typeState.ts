@@ -1,8 +1,6 @@
-export type State = {
+export type Task = {
     id: number,
     text: string
 }
 
-export interface IState {
-    tasks: State[] | [] 
-}
+export type IState =  Task[] | [] 
