@@ -10,4 +10,6 @@ export interface IAction {
     task: Task
 }
 
+export type PartialTask = Partial<IAction>
+
 export type IAddTask = Pick<IAction, "type" | "id" | "text">

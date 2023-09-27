@@ -1,5 +1,6 @@
 import { TasksProvider } from './components/TasksProvider';
 import AddTask from './components/AddTask';
+import TaskList from 'components/TasksList';
 
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
       <TasksProvider>
           <h1>TodoList</h1>
           <AddTask/>
+          <TaskList/>
       </TasksProvider>
     );
   }
