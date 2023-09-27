@@ -1,7 +1,7 @@
 import React, { useContext, useReducer, createContext } from 'react'
-import { IState } from '../../types/typeState';
-import { Constants } from '../../types/actions';
-import { IAction } from '../../types/typeAction';
+import { IState } from '../types/typeState';
+import { Constants } from '../types/actions';
+import { IAction } from '../types/typeAction';
 
 const TasksContext = createContext<IState | null>(null);
 const TasksDispatchContext = createContext<React.Dispatch<IAction> | null>(null);

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useTasksDispatch } from './TasksProvider.js';
-import { Constants } from '../../types/actions.js';
-import { IAddTask } from '../../types/typeAction.js';
+import { IAddTask } from '../types/typeAction';
+import { useTasksDispatch } from './TasksProvider';
+import { Constants } from '../types/actions';
 
 let nextId = 0;
 
