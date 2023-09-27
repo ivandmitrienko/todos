@@ -6,8 +6,11 @@ import { Constants } from '../types/actions';
 const TasksContext = createContext<IState | null>(null);
 const TasksDispatchContext = createContext<React.Dispatch<IAction> | null>(null);
 let initialTasks: IState = [];
+interface Props {
+    children: React.ReactNode;
+}
 
-export default function TasksProvider({ children }) {
+export function TasksProvider({ children }: Props) {
 
     const [tasks, dispatch] = useReducer(
         tasksReducer,

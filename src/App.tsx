@@ -1,10 +1,11 @@
 import React from 'react';
 
+
 function App() {
   return (
-   <TasksProvider>
 
-   </TasksProvider>
+    <h1>TodoList</h1>
+
   );
 }
 
